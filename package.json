@@ -1,5 +1,5 @@
 {
-  "name": "reactjs-boilerplate",
+  "name": "min-resume-reactjs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -25,5 +25,13 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangquochung1110/min-resume-reactjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hoangquochung1110/min-resume-reactjs/issues"
+  },
+  "homepage": "https://github.com/hoangquochung1110/min-resume-reactjs#readme"
 }
