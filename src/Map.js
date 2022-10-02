@@ -69,7 +69,13 @@ const Map = () => {
             map.setLayoutProperty("district-label", "text-field", [
                 "format",
                 ["get", "name"],
-                {"font-scale": 1.2}
+                {"font-scale": 1.2},
+                "\n",
+                {},
+                ["get", "population_in_2019"],
+                {
+                    "font-scale": 0.9
+                }
             ])
             
             // Add circle layer
