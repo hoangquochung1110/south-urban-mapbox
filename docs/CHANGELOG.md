@@ -1,5 +1,10 @@
 ### CHANGELOG
 
+#### 0.0.4
+
+- Add Legend and OptionsField component
+- Display density
+
 #### 0.0.3
 - Add symbol layer, set layout property: text-field to display district name
 
