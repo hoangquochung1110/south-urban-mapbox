@@ -59,14 +59,29 @@ const Map = () => {
                 cluster: true,
             });
 
-            // add mapbox layer
+            // Add symbol layer to display district name
+            map.addLayer({
+                id: "district-label",
+                type: "symbol",
+                source: "districts"   
+            });
+            // Set district name on circle layer
+            map.setLayoutProperty("district-label", "text-field", [
+                "format",
+                ["get", "name"],
+                {"font-scale": 1.2}
+            ])
+            
+            // Add circle layer
             map.addLayer({
                 id: "districts",
                 type: "circle",
                 source: "districts"
-            })
-
-            // set Paint property for Layer
+                },
+                "district-label"
+            );
+            
+            // Set Paint property for Layer
             map.setPaintProperty("districts", "circle-color", {
                 property: active.property,
                 stops: active.colorStops
@@ -77,7 +92,6 @@ const Map = () => {
             });
 
             setMap(map);
-            debugger;
         });
 
         // Clean up on unmount
