@@ -11,7 +11,7 @@
           ]
         },
         "properties": {
-          "name": "1",
+          "name": "Quan 1",
           "population_in_2019": 142625,
           "density": 18474,
           "area": "7,72"
@@ -22,12 +22,12 @@
         "geometry": {
           "type": "Point",
           "coordinates": [
-            "105.3738699",
-            "20.0890676"
+            "106.752614",
+            "10.786741"
           ]
         },
         "properties": {
-          "name": "2",
+          "name": "Quan 2",
           "population_in_2019": 180275,
           "density": 3620,
           "area": "49,79"
@@ -43,7 +43,7 @@
           ]
         },
         "properties": {
-          "name": "3",
+          "name": "Quan 3",
           "population_in_2019": 190375,
           "density": 38694,
           "area": "4,92"
@@ -59,7 +59,7 @@
           ]
         },
         "properties": {
-          "name": "4",
+          "name": "Quan 4",
           "population_in_2019": 175329,
           "density": 41944,
           "area": "4,18"
@@ -75,7 +75,7 @@
           ]
         },
         "properties": {
-          "name": "5",
+          "name": "Quan 5",
           "population_in_2019": 159073,
           "density": 37253,
           "area": "4,27"
@@ -91,7 +91,7 @@
           ]
         },
         "properties": {
-          "name": "6",
+          "name": "Quan 6",
           "population_in_2019": 233561,
           "density": 32711,
           "area": "7,14"
@@ -107,7 +107,7 @@
           ]
         },
         "properties": {
-          "name": "7",
+          "name": "Quan 7",
           "population_in_2019": 360155,
           "density": 10091,
           "area": "35,69"
@@ -123,7 +123,7 @@
           ]
         },
         "properties": {
-          "name": "8",
+          "name": "Quan 8",
           "population_in_2019": 424667,
           "density": 22222,
           "area": "19,11"
@@ -134,12 +134,12 @@
         "geometry": {
           "type": "Point",
           "coordinates": [
-            "105.3738699",
-            "20.0890676"
+            "106.815506",
+            "10.833398"
           ]
         },
         "properties": {
-          "name": "9",
+          "name": "Quan 9",
           "population_in_2019": 397006,
           "density": 3483,
           "area": "113,97"
@@ -155,7 +155,7 @@
           ]
         },
         "properties": {
-          "name": "10",
+          "name": "Quan 10",
           "population_in_2019": 234819,
           "density": 41052,
           "area": "5,72"
@@ -171,7 +171,7 @@
           ]
         },
         "properties": {
-          "name": "11",
+          "name": "Quan 11",
           "population_in_2019": 209867,
           "density": 40830,
           "area": "5,14"
@@ -187,7 +187,7 @@
           ]
         },
         "properties": {
-          "name": "12",
+          "name": "Quan 12",
           "population_in_2019": 620146,
           "density": 11758,
           "area": "52,74"
