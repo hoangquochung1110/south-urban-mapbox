@@ -4,76 +4,14 @@ import Optionsfield from "./components/Optionsfield";
 import React, { useEffect, useState, useRef } from "react";
 import "./Map.css";
 import data from "../hochiminh_population_geo.json";
+import { options } from "./constants";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiaG9hbmdxdW9jaHVuZzExMTAiLCJhIjoiY2w4Ym55OXRqMDB0bjNvcGRycDN2MGRuZSJ9.EEFhms7cuNTpkRH-TxfVPw";
 
 const Map = () => {
-  const options = [
-    {
-      name: "Population",
-      description: "Estimated total population in 2019",
-      property: "population_in_2019",
-      colorStops: [
-        [0, "#f8d5cc"],
-        [100000, "#f4bfb6"],
-        [200000, "#f1a8a5"],
-        [300000, "#ee8f9a"],
-        [400000, "#ec739b"],
-        [500000, "#dd5ca8"],
-        [600000, "#c44cc0"],
-        [700000, "#9f43d7"],
-        [800000, "#6e40e6"],
-      ],
-      radiusStops: [
-        [100, 0.01],
-        [1000, 1],
-        [2000, 2],
-        [3000, 3],
-        [4000, 4],
-        [5000, 5],
-        [10000, 8],
-        [20000, 16],
-        [30000, 24],
-        [40000, 50],
-      ],
-    },
-    {
-      name: "Density",
-      description: "Population per kilometer square",
-      property: "density",
-      colorStops: [
-        [100, "#fafa6e"],
-        [1000, "#aae479"],
-        [2000, "#98de7c"],
-        [3000, "#75d084"],
-        [4000, "#54c18a"],
-        [5000, "#34b28e"],
-        [10000, "#10a18f"],
-        [15000, "#00918d"],
-        [20000, "#008087"],
-        [25000, "#0d707d"],
-        [30000, "#1f5f70"],
-        [35000, "#285061"],
-        [40000, "#2a4858"],
-      ],
-      radiusStops: [
-        [100, 1],
-        [1000, 1],
-        [2000, 2],
-        [3000, 3],
-        [4000, 4],
-        [5000, 5],
-        [10000, 8],
-        [15000, 14],
-        [20000, 16],
-        [25000, 20],
-        [30000, 24],
-        [35000, 30],
-        [40000, 50],
-      ],
-    },
-  ];
+
+  const zoomThreshold = 10.9; // zoom level at which we display ward-level data
   const mapContainerRef = useRef(null);
   const [active, setActive] = useState(options[0]); // property to display
   const [map, setMap] = useState(null);
@@ -95,6 +33,8 @@ const Map = () => {
         type: "geojson",
         data,
         cluster: true,
+        clusterMaxZoom: 14,
+        clusterRadius: 50
       });
 
       // Add symbol layer to display district name
@@ -140,13 +80,35 @@ const Map = () => {
       setMap(map);
     });
 
+    map.on("click", "districts", (e) => {
+      const feature = map.queryRenderedFeatures(e.point, {
+        layers: ['districts']
+      });
+      debugger;
+      const districtName = feature[0].properties.name;
+
+      map.getSource("districts").getClusterExpansionZoom(
+        districtName,
+        (err, zoom) => {
+          if (err) return;
+          map.easeTo({
+            center: feature[0].geometry.coordinates,
+            zoom: zoom
+          });
+        }
+      );
+      // debugger;
+    })
     // Clean up on unmount
     return () => map.remove();
   }, []);
 
+
+
   useEffect(() => {
     // Update layers when active is updated
     paint();
+    console.log(map);
   }, [active]);
 
   const paint = () => {
