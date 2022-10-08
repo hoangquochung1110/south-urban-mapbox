@@ -10,8 +10,6 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoiaG9hbmdxdW9jaHVuZzExMTAiLCJhIjoiY2w4Ym55OXRqMDB0bjNvcGRycDN2MGRuZSJ9.EEFhms7cuNTpkRH-TxfVPw";
 
 const Map = () => {
-
-  const zoomThreshold = 10.9; // zoom level at which we display ward-level data
   const mapContainerRef = useRef(null);
   const [active, setActive] = useState(options[0]); // property to display
   const [map, setMap] = useState(null);
@@ -34,27 +32,32 @@ const Map = () => {
         data,
         cluster: true,
         clusterMaxZoom: 14,
-        clusterRadius: 50
+        clusterRadius: 50,
       });
 
       // Add symbol layer to display district name
+      // Set layout property with text-field
       map.addLayer({
         id: "district-label",
         type: "symbol",
         source: "districts",
-      });
-      // Set district name on circle layer
-      map.setLayoutProperty("district-label", "text-field", [
-        "format",
-        ["get", "name"],
-        { "font-scale": 1.2 },
-        "\n",
-        {},
-        ["get", active.property],
-        {
-          "font-scale": 0.9,
+        layout: {
+          "text-field": [
+            "format",
+            ["get", "name"],
+            { "font-scale": 1.2 },
+            "\n",
+            {},
+            ["get", active.property],
+            {
+              "font-scale": 0.9,
+            },
+          ],
         },
-      ]);
+        paint: {
+          "text-color": "#FFFFFF",
+        },
+      });
 
       // Add circle layer
       map.addLayer(
@@ -62,48 +65,43 @@ const Map = () => {
           id: "districts",
           type: "circle",
           source: "districts",
+          paint: {
+            "circle-color": {
+              property: active.property,
+              stops: active.colorStops,
+            },
+            "circle-radius": {
+              property: active.property,
+              stops: active.radiusStops,
+            },
+          },
         },
         "district-label"
       );
-
-      // Set Paint property for Layer
-      map.setPaintProperty("districts", "circle-color", {
-        property: active.property,
-        stops: active.colorStops,
-      });
-      map.setPaintProperty("districts", "circle-radius", {
-        property: active.property,
-        stops: active.radiusStops,
-      });
-      map.setPaintProperty("district-label", "text-color", "#FFFFFF");
 
       setMap(map);
     });
 
     map.on("click", "districts", (e) => {
       const feature = map.queryRenderedFeatures(e.point, {
-        layers: ['districts']
+        layers: ["districts"],
       });
-      debugger;
       const districtName = feature[0].properties.name;
 
-      map.getSource("districts").getClusterExpansionZoom(
-        districtName,
-        (err, zoom) => {
+      map
+        .getSource("districts")
+        .getClusterExpansionZoom(districtName, (err, zoom) => {
           if (err) return;
           map.easeTo({
             center: feature[0].geometry.coordinates,
-            zoom: zoom
+            zoom: zoom,
           });
-        }
-      );
+        });
       // debugger;
-    })
+    });
     // Clean up on unmount
     return () => map.remove();
   }, []);
-
-
 
   useEffect(() => {
     // Update layers when active is updated
