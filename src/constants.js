@@ -64,4 +64,15 @@ const options = [
     },
 ];
 
-export {options};
+const colorMapping = {
+  "shakespeare": "#51bbd6",
+  "manz": "#f1f075",
+  "mauvelous": "#f28cb1"
+}
+
+const pixelMapping = {
+  "px20": 20,
+  "px30": 30,
+  "px40": 40
+}
+export {options, colorMapping, pixelMapping};
