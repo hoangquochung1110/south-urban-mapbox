@@ -1,5 +1,5 @@
 import mapboxgl from "mapbox-gl";
-import Legend from "./components/Legend";
+import {WardLegend, Legend} from "./components/Legend";
 import Optionsfield from "./components/Optionsfield";
 import React, { useEffect, useState, useRef } from "react";
 import "./Map.css";
@@ -12,6 +12,7 @@ mapboxgl.accessToken =
 const Map = () => {
   const mapContainerRef = useRef(null);
   const [active, setActive] = useState(options[0]); // property to display
+  const [districtOnClick, setDistrictOnClick] = useState(null)
   const [map, setMap] = useState(null);
 
   // Init map when component mounts
@@ -135,9 +136,20 @@ const Map = () => {
           });
         });
     });
+
+    map.on("click", "districts", (e) => {
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: ["districts"],
+      });
+      if (features[0].properties.hasOwnProperty("wards")){
+        setDistrictOnClick(JSON.parse(features[0].properties.wards));
+      }
+    })
+
     // Clean up on unmount
     return () => map.remove();
   }, []);
+
 
   useEffect(() => {
     // Update layers when active is updated
@@ -186,6 +198,8 @@ const Map = () => {
     <div>
       <div ref={mapContainerRef} className="map-container" />
       <Legend active={active} stops={active.colorStops} />
+      {districtOnClick && <WardLegend districtOnClick={districtOnClick} />}
+      
       <Optionsfield
         options={options}
         property={active.property}
