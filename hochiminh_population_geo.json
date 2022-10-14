@@ -193,70 +193,70 @@
           "area": "52,74",
           "wards": [
             {
-              "phuong": "An Phu Dong",
-              "dien tich": 8.56,
-              "dan so": 11333,
-              "mat so": 1324
+              "name": "An Phu Dong",
+              "area": 8.56,
+              "population_in_2019": 11333,
+              "density": 1324
             },
             {
-              "phuong": "Dong Hung Thuan",
-              "dien tich": 2.55,
-              "dan so": 33068,
-              "mat so": 12958
+              "name": "Dong Hung Thuan",
+              "area": 2.55,
+              "population_in_2019": 33068,
+              "density": 12958
             },
             {
-              "phuong": "Hiep Thanh",
-              "dien tich": 5.31,
-              "dan so": 16172,
-              "mat so": 3046
+              "name": "Hiep Thanh",
+              "area": 5.31,
+              "population_in_2019": 16172,
+              "density": 3046
             },
             {
-              "phuong": "Tan Chanh Hiep",
-              "dien tich": 4.22,
-              "dan so": 15210,
-              "mat so": 3604
+              "name": "Tan Chanh Hiep",
+              "area": 4.22,
+              "population_in_2019": 15210,
+              "density": 3604
             },
             {
-              "phuong": "Tan Hung Thuan",
-              "dien tich": 1.81,
-              "dan so": 24829,
-              "mat so": 13712
+              "name": "Tan Hung Thuan",
+              "area": 1.81,
+              "population_in_2019": 24829,
+              "density": 13712
             },
             {
-              "phuong": "Tan Thoi Hiep",
-              "dien tich": 3.3,
-              "dan so": 14272,
-              "mat so": 4325
+              "name": "Tan Thoi Hiep",
+              "area": 3.3,
+              "population_in_2019": 14272,
+              "density": 4325
             },
             {
-              "phuong": "Tan Thoi Nhat",
-              "dien tich": 3.85,
-              "dan so": 21716,
-              "mat so": 5641
+              "name": "Tan Thoi Nhat",
+              "area": 3.85,
+              "population_in_2019": 21716,
+              "density": 5641
             },
             {
-              "phuong": "Thanh Loc",
-              "dien tich": 5.71,
-              "dan so": 12621,
-              "mat so": 2210
+              "name": "Thanh Loc",
+              "area": 5.71,
+              "population_in_2019": 12621,
+              "density": 2210
             },
             {
-              "phuong": "Thanh Xuan",
-              "dien tich": 9.58,
-              "dan so": 12414,
-              "mat so": 1296
+              "name": "Thanh Xuan",
+              "area": 9.58,
+              "population_in_2019": 12414,
+              "density": 1296
             },
             {
-              "phuong": "Thoi An",
-              "dien tich": 4.51,
-              "dan so": 8979,
-              "mat so": 1991
+              "name": "Thoi An",
+              "area": 4.51,
+              "population_in_2019": 8979,
+              "density": 1991
             },
             {
-              "phuong": "Trung My Tay",
-              "dien tich": 2.73,
-              "dan so": 17764,
-              "mat so": 6507
+              "name": "Trung My Tay",
+              "area": 2.73,
+              "population_in_2019": 17764,
+              "density": 6507
             }
           ]
         }

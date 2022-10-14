@@ -198,7 +198,7 @@ const Map = () => {
     <div>
       <div ref={mapContainerRef} className="map-container" />
       <Legend active={active} stops={active.colorStops} />
-      {districtOnClick && <WardLegend districtOnClick={districtOnClick} />}
+      {districtOnClick && <WardLegend districtOnClick={districtOnClick} active={active}/>}
       
       <Optionsfield
         options={options}
