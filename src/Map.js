@@ -12,7 +12,8 @@ mapboxgl.accessToken =
 const Map = () => {
   const mapContainerRef = useRef(null);
   const [active, setActive] = useState(options[0]); // property to display
-  const [districtOnClick, setDistrictOnClick] = useState(null)
+  const [districtOnClick, setDistrictOnClick] = useState(null);
+  const [wards, setWards] = useState(null);
   const [map, setMap] = useState(null);
 
   // Init map when component mounts
@@ -142,7 +143,9 @@ const Map = () => {
         layers: ["districts"],
       });
       if (features[0].properties.hasOwnProperty("wards")){
-        setDistrictOnClick(JSON.parse(features[0].properties.wards));
+        console.log(features[0].properties);
+        setWards(JSON.parse(features[0].properties.wards))
+        setDistrictOnClick(features[0].properties.name);
       }
     })
 
@@ -198,7 +201,7 @@ const Map = () => {
     <div>
       <div ref={mapContainerRef} className="map-container" />
       <Legend active={active} stops={active.colorStops} />
-      {districtOnClick && <WardLegend districtOnClick={districtOnClick} active={active}/>}
+      {districtOnClick && <WardLegend districtOnClick={districtOnClick} wards={wards} active={active}/>}
       
       <Optionsfield
         options={options}

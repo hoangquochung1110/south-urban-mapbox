@@ -14,7 +14,7 @@
           "name": "Quan 1",
           "population_in_2019": 142625,
           "density": 18474,
-          "area": "7,72"
+          "area": 7.72
         }
       },
       {
@@ -30,7 +30,7 @@
           "name": "Quan 2",
           "population_in_2019": 180275,
           "density": 3620,
-          "area": "49,79"
+          "area": 49.79
         }
       },
       {
@@ -46,7 +46,7 @@
           "name": "Quan 3",
           "population_in_2019": 190375,
           "density": 38694,
-          "area": "4,92"
+          "area": 4.92
         }
       },
       {
@@ -62,7 +62,7 @@
           "name": "Quan 4",
           "population_in_2019": 175329,
           "density": 41944,
-          "area": "4,18"
+          "area": 4.18
         }
       },
       {
@@ -78,7 +78,7 @@
           "name": "Quan 5",
           "population_in_2019": 159073,
           "density": 37253,
-          "area": "4,27"
+          "area": 4.27
         }
       },
       {
@@ -94,7 +94,7 @@
           "name": "Quan 6",
           "population_in_2019": 233561,
           "density": 32711,
-          "area": "7,14"
+          "area": 7.14
         }
       },
       {
@@ -110,7 +110,7 @@
           "name": "Quan 7",
           "population_in_2019": 360155,
           "density": 10091,
-          "area": "35,69"
+          "area": 35.69
         }
       },
       {
@@ -126,7 +126,7 @@
           "name": "Quan 8",
           "population_in_2019": 424667,
           "density": 22222,
-          "area": "19,11"
+          "area": 19.11
         }
       },
       {
@@ -142,7 +142,7 @@
           "name": "Quan 9",
           "population_in_2019": 397006,
           "density": 3483,
-          "area": "113,97"
+          "area": 113.97
         }
       },
       {
@@ -158,7 +158,7 @@
           "name": "Quan 10",
           "population_in_2019": 234819,
           "density": 41052,
-          "area": "5,72"
+          "area": 5.72
         }
       },
       {
@@ -174,7 +174,7 @@
           "name": "Quan 11",
           "population_in_2019": 209867,
           "density": 40830,
-          "area": "5,14"
+          "area": 5.14
         }
       },
       {
@@ -190,7 +190,7 @@
           "name": "Quan 12",
           "population_in_2019": 620146,
           "density": 11758,
-          "area": "52,74",
+          "area": 52.74,
           "wards": [
             {
               "name": "An Phu Dong",
@@ -274,7 +274,7 @@
           "name": "Thu Duc",
           "population_in_2019": 592686,
           "density": 12399,
-          "area": "47,80"
+          "area": 47.80
         }
       },
       {
@@ -290,7 +290,7 @@
           "name": "Go Vap",
           "population_in_2019": 676899,
           "density": 34308,
-          "area": "19,73"
+          "area": 19.73
         }
       },
       {
@@ -306,7 +306,7 @@
           "name": "Binh Thanh",
           "population_in_2019": 499164,
           "density": 24021,
-          "area": "20,78"
+          "area": 20.78
         }
       },
       {
@@ -322,7 +322,7 @@
           "name": "Tan Binh",
           "population_in_2019": 474792,
           "density": 21167,
-          "area": "22,43"
+          "area": 22.43
         }
       },
       {
@@ -338,7 +338,7 @@
           "name": "Tan Phu",
           "population_in_2019": 485348,
           "density": 30391,
-          "area": "15,97"
+          "area": 15.97
         }
       },
       {
@@ -354,7 +354,7 @@
           "name": "Phu Nhuan",
           "population_in_2019": 163961,
           "density": 33598,
-          "area": "4,88"
+          "area": 4.88
         }
       },
       {
@@ -370,7 +370,7 @@
           "name": "Binh Tan",
           "population_in_2019": 784173,
           "density": 15074,
-          "area": "52,02"
+          "area": 52.02
         }
       },
       {
@@ -386,7 +386,7 @@
           "name": "Cu Chi",
           "population_in_2019": 462047,
           "density": 1062,
-          "area": "434,77"
+          "area": 434.77
         }
       },
       {
@@ -402,7 +402,7 @@
           "name": "Hoc Mon",
           "population_in_2019": 542243,
           "density": 4967,
-          "area": "109,17"
+          "area": 109.17
         }
       },
       {
@@ -418,7 +418,7 @@
           "name": "Binh Chanh",
           "population_in_2019": 705508,
           "density": 2793,
-          "area": "252,56"
+          "area": 252.56
         }
       },
       {
@@ -434,7 +434,7 @@
           "name": "Nha Be",
           "population_in_2019": 206837,
           "density": 2059,
-          "area": "100,43"
+          "area": 100.43
         }
       },
       {
@@ -450,7 +450,7 @@
           "name": "Can Gio",
           "population_in_2019": 71526,
           "density": 101,
-          "area": "704,45"
+          "area": 704.45
         }
       }
     ]

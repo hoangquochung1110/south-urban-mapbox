@@ -62,6 +62,33 @@ const options = [
         [40000, 50],
       ],
     },
+    {
+      name: "Area",
+      description: "Unit: kilometer square",
+      property: "area",
+      colorStops: [
+        [6, "#d8b8a3"],
+        [8, "#dfb091"],
+        [15, "#eb955b"],
+        [20, "#ee8e50"],
+        [30, "#f18844"],
+        [50, "#f48138"],
+        [100, "#f7792b"],
+        [150, "#f9711c"],
+        [200, "#fc6907"],
+      ],
+      radiusStops: [
+        [6, 3],
+        [8, 5],
+        [15, 8],
+        [20, 12],
+        [30, 16],
+        [50, 25],
+        [100, 50],
+        [150, 70],
+        [200, 100],
+      ]
+    }
 ];
 
 const colorMapping = {

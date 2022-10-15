@@ -29,7 +29,7 @@ const Legend = (props) => {
 
 
 const WardLegend = (props) => {
-  console.log(props);
+
   const renderWard = (ward, i) => {
     return (
       <div key={i} className="txt-s">
@@ -43,11 +43,11 @@ const WardLegend = (props) => {
     <>
       <div className="bg-white absolute bottom left ml12 mb24 py12 px12 shadow-darken10 round z1 wmax240">
         <div className="mb6">
-          <h2 className="txt-bold txt-s block">{props.active.property}</h2>
-          <p className="txt-s color-gray">Description</p>
+          <h2 className="txt-bold txt-s block">{props.districtOnClick}</h2>
+          <p className="txt-s color-gray">{props.active.name} in each ward</p>
         </div>
-        {props.districtOnClick
-        .sort((a, b) => b[props.active.property] - a[props.active.property])
+        {props.wards
+        .sort((a, b) => a[props.active.property] - b[props.active.property])
         .map(renderWard)}
       </div>
     </>
