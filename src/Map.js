@@ -6,8 +6,7 @@ import "./Map.css";
 import data from "../hochiminh_population_geo.json";
 import { options, colorMapping, pixelMapping } from "./constants";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiaG9hbmdxdW9jaHVuZzExMTAiLCJhIjoiY2w4Ym55OXRqMDB0bjNvcGRycDN2MGRuZSJ9.EEFhms7cuNTpkRH-TxfVPw";
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_SECRET_KEY;
 
 const Map = () => {
   const mapContainerRef = useRef(null);
