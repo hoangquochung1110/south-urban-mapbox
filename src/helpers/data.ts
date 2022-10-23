@@ -299,8 +299,8 @@ const Districts: Array<Feature> = [
           geometry: {
             type: "Point",
             coordinates: [
-              106.6113872,
-              11.3778732
+              106.70404167275316,
+              10.812294900000001,
             ]
           },
           properties: {
