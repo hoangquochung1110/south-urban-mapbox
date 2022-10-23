@@ -1,25 +1,27 @@
 import mapboxgl from "mapbox-gl";
+import { GeoJSONSource, MapboxGeoJSONFeature } from "mapbox-gl";
 import {WardLegend, Legend} from "./components/Legend";
 import Optionsfield from "./components/Optionsfield";
 import React, { useEffect, useState, useRef } from "react";
 import "./Map.css";
 import data from "../hochiminh_population_geo.json";
 import { options, colorMapping, pixelMapping } from "./constants";
+import { HoChiMinh } from "./helpers/data";
 
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_SECRET_KEY;
+
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_SECRET_KEY || "";
 
 const Map = () => {
-  const mapContainerRef = useRef(null);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(options[0]); // property to display (population, density ...)
   const [districtOnClick, setDistrictOnClick] = useState(null); // to store the name of on-clicked district
   const [wards, setWards] = useState(null); // store data of on-clicked district
-  const [map, setMap] = useState(null);
 
   // Init map when component mounts
   useEffect(() => {
     // Init mapbox object
     const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
+      container: mapContainerRef.current!,
       style: "mapbox://styles/mapbox/dark-v10",
       center: [106, 10],
       zoom: 7,
@@ -30,7 +32,7 @@ const Map = () => {
       console.log(data);
       map.addSource("districts", {
         type: "geojson",
-        data,
+        data: HoChiMinh,
         cluster: true,
         clusterMaxZoom: 15,
         clusterRadius: 40,
@@ -116,24 +118,24 @@ const Map = () => {
         },
       });
 
-      setMap(map);
     });
 
     // inspect a cluster on click
     map.on("click", "clusters", (e) => {
-      const features = map.queryRenderedFeatures(e.point, {
+      const features: MapboxGeoJSONFeature[] = map.queryRenderedFeatures(e.point, {
         layers: ["clusters"],
       });
-      const clusterId = features[0].properties.cluster_id;
-      map
-        .getSource("districts")
-        .getClusterExpansionZoom(clusterId, (err, zoom) => {
+      const clusterId = features[0].properties?.cluster_id;
+      const source: GeoJSONSource = map.getSource("districts") as GeoJSONSource
+      source.getClusterExpansionZoom(clusterId, (err, zoom) => {
           if (err) return;
 
-          map.easeTo({
-            center: features[0].geometry.coordinates,
-            zoom: zoom,
-          });
+          if (features[0].geometry.type == "Point"){
+            map.easeTo({
+              center: [features[0].geometry.coordinates[0], features[0].geometry.coordinates[1]],
+              zoom: zoom,
+            });
+          }
         });
     });
 
@@ -141,7 +143,7 @@ const Map = () => {
       const features = map.queryRenderedFeatures(e.point, {
         layers: ["districts"],
       });
-      if (features[0].properties.hasOwnProperty("wards")){
+      if (features[0].properties?.hasOwnProperty("wards")){
         console.log(features[0].properties);
         setWards(JSON.parse(features[0].properties.wards))
         setDistrictOnClick(features[0].properties.name);
@@ -153,48 +155,50 @@ const Map = () => {
   }, []);
 
 
-  useEffect(() => {
-    // Update layers when active is updated
-    paint();
-    console.log(map);
-  }, [active]);
+  // useEffect(() => {
+  //   // Update layers when active is updated
+  //   paint();
+  //   console.log(map);
+  // }, [active]);
 
-  const paint = () => {
-    if (map) {
-      map.setPaintProperty("districts", "circle-color", {
-        property: active.property,
-        stops: active.colorStops,
-      });
-      map.setPaintProperty("districts", "circle-radius", {
-        property: active.property,
-        stops: active.radiusStops,
-      });
-      map.setLayoutProperty("district-label", "text-field", [
-        "format",
-        ["get", "name"],
-        { "font-scale": 1.2 },
-        "\n",
-        {},
-        ["get", active.property],
-        {
-          "font-scale": 0.9,
-        },
-      ]);
-    }
-  };
+  // const paint = () => {
+  //   if (map) {
+  //     map.setPaintProperty("districts", "circle-color", {
+  //       property: active.property,
+  //       stops: active.colorStops,
+  //     });
+  //     map.setPaintProperty("districts", "circle-radius", {
+  //       property: active.property,
+  //       stops: active.radiusStops,
+  //     });
+  //     map.setLayoutProperty("district-label", "text-field", [
+  //       "format",
+  //       ["get", "name"],
+  //       { "font-scale": 1.2 },
+  //       "\n",
+  //       {},
+  //       ["get", active.property],
+  //       {
+  //         "font-scale": 0.9,
+  //       },
+  //     ]);
+  //   }
+  // };
 
-  const changeState = (i) => {
-    setActive(options[i]);
-    map.setPaintProperty("districts", "circle-color", {
-      // Update circle-color
-      property: active.property,
-      stops: active.colorStops,
-    });
-    map.setPaintProperty("districts", "circle-radius", {
-      property: active.property,
-      stops: active.radiusStops,
-    });
-  };
+  // const changeState = (i) => {
+  //   setActive(options[i]);
+  //   if (map){
+  //     map.setPaintProperty("districts", "circle-color", {
+  //       // Update circle-color
+  //       property: active.property,
+  //       stops: active.colorStops,
+  //     });
+  //     map.setPaintProperty("districts", "circle-radius", {
+  //       property: active.property,
+  //       stops: active.radiusStops,
+  //     });
+  //   }
+  // };
 
   return (
     <div>
@@ -205,7 +209,7 @@ const Map = () => {
       <Optionsfield
         options={options}
         property={active.property}
-        changeState={changeState}
+        // changeState={changeState}
       />
     </div>
   );
