@@ -10,9 +10,9 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_SECRET_KEY;
 
 const Map = () => {
   const mapContainerRef = useRef(null);
-  const [active, setActive] = useState(options[0]); // property to display
-  const [districtOnClick, setDistrictOnClick] = useState(null);
-  const [wards, setWards] = useState(null);
+  const [active, setActive] = useState(options[0]); // property to display (population, density ...)
+  const [districtOnClick, setDistrictOnClick] = useState(null); // to store the name of on-clicked district
+  const [wards, setWards] = useState(null); // store data of on-clicked district
   const [map, setMap] = useState(null);
 
   // Init map when component mounts
@@ -22,7 +22,7 @@ const Map = () => {
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/dark-v10",
       center: [106, 10],
-      zoom: 5,
+      zoom: 7,
     });
 
     map.on("load", () => {
